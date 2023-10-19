@@ -66,13 +66,13 @@ public class JobTest {
         String lastChar = String.valueOf(test_toString_job.toString().charAt(test_toString_job.toString().length()-1));
         assertEquals(firstChar, lineSeparator());
         assertEquals(lastChar, lineSeparator());
-        assertEquals(System.lineSeparator());
-                "ID: " + test_toString_job.getId() + System.lineSeparator() +
-                "Name: Product tester" + System.lineSeparator() +
-                "Employer: E" + System.lineSeparator() +
-                "Location: Desert" + System.lineSeparator() +
-                "Position Type: Quality control" + System.lineSeparator() +
-                "Core Competency: Persistence" + System.lineSeparator(),test_toString_job.toString();
+        assertEquals(newline+
+                "ID: " + test_toString_job.getId() + newline +
+                "Name: Product tester" + newline +
+                "Employer: ACME" + newline +
+                "Location: Desert" + newline +
+                "Position Type: Quality control" + newline +
+                "Core Competency: Persistence" + newline,test_toString_job.toString());
 
     }
 
