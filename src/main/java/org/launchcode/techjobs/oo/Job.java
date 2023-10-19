@@ -3,7 +3,7 @@ package org.launchcode.techjobs.oo;
 import java.util.Objects;
 
 public class Job {
-
+// instance variables
     private int id;
     private static int nextId = 1;
 
@@ -16,11 +16,12 @@ public class Job {
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
+    // increments ids
     public Job() {
         id = nextId;
         nextId++;
     }
-
+//calls the default constructor so each job is unique
     public Job(String n, Employer e, Location l, PositionType p, CoreCompetency c) {
         this();
         this.name = n;
@@ -32,6 +33,7 @@ public class Job {
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
+    //checks job validity
     public boolean isJobValid() {
         return (this.name != null) ||
                 (this.employer != null) ||
@@ -39,6 +41,7 @@ public class Job {
                 (this.positionType != null) ||
                 (this.coreCompetency != null);
     }
+    //creates the custom string repping the Job Obj
     @Override public String toString() {
         if (!isJobValid()) {
             return "Job does not exist.";
@@ -53,6 +56,8 @@ public class Job {
                     "Position Type: " + this.getPositionType() + newline +
                     "Core Competency: " + this.getCoreCompetency() + newline;
     }
+
+    //checks for matching job ids
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,14 +66,18 @@ public class Job {
         return id == job.id;
     }
 
+    //hashcode override so ID dioes it
     @Override
     public int hashCode() {
+
         return Objects.hash(id);
     }
     // Generate the hashCode method using the id field:
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
+
+   // so many getters and setters. Check the autogenerate?
     public int getId() {
         return id;
     }

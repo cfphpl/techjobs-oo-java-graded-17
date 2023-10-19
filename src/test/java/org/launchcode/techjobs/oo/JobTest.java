@@ -1,20 +1,20 @@
 package org.launchcode.techjobs.oo;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Objects;
-
 import static java.lang.System.lineSeparator;
 import static org.junit.Assert.*;
-
+//JJJJ JUNIT!
 public class JobTest {
     //TODO: Create your unit tests here
+    //verifying IDs are not equal
     @Test
     public void testSettingJobId() {
         Job test_job = new Job();
         Job test_job_2 = new Job();
         assertNotEquals(test_job.getId(),test_job_2.getId());
     }
+    //checks alll them fields
     @Test
     public void testJobConstructorSetsAllFields() {
         Job testFields = new Job("Product tester", new Employer("ACME"),
@@ -42,7 +42,7 @@ public class JobTest {
 
 
     }
-
+     // checks to make sure two jobs equal or no
     @Test
     public void testJobsForEquality() {
         Job test_job = new Job("Product tester", new Employer("ACME"),
@@ -55,6 +55,8 @@ public class JobTest {
         assertNotEquals(test_job,test_job_2);
     }
 
+
+    //I dont know. It keeps failing here but not in git. I think it has something to do with how mac vs windows handles carrige return. GHAA!
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job test_toString_job = new Job("Product tester", new Employer("ACME"),
@@ -75,7 +77,7 @@ public class JobTest {
                 "Core Competency: Persistence" + newline,test_toString_job.toString());
 
     }
-
+    // checking the data against a known
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
         Job correct_label_and_data_job = new Job("Product tester", new Employer("ACME"),
@@ -93,7 +95,7 @@ public class JobTest {
                 , correct_label_and_data_job.toString());
 
     }
-
+    // testing for blanks in the data
     @Test
     public void testToStringHandlesEmptyField() {
         Job testerJob = new Job("Product tester", new Employer("ACME"),

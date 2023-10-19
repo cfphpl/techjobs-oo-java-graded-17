@@ -2,6 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+//inherits jobfield
 public class PositionType extends JobField {
 
 
@@ -11,6 +12,7 @@ public class PositionType extends JobField {
     }
 
     public PositionType(String value) {
+
         super(value);
     }
 
