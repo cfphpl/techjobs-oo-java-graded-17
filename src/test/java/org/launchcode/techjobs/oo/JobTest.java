@@ -61,7 +61,8 @@ public class JobTest {
     public void testToStringStartsAndEndsWithNewLine() {
         Job test_toString_job = new Job("Product tester", new Employer("ACME"),
                 new Location("Desert"), new PositionType("Quality control"),
-                new CoreCompetency("Persistence"));;
+                new CoreCompetency("Persistence"));
+
 
         String newline = System.lineSeparator();
         String firstChar = String.valueOf(test_toString_job.toString().charAt(0));
