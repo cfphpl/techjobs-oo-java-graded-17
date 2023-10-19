@@ -21,18 +21,62 @@ public class Job {
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+    public Job(String n, Employer e, Location l, PositionType p, CoreCompetency c) {
         this();
-        this.name = name;
-        this.employer = employer;
-        this.location = location;
-        this.positionType = positionType;
-        this.coreCompetency = coreCompetency;
+        this.name = n;
+        this.employer = e;
+        this.location = l;
+        this.positionType = p;
+        this.coreCompetency = c;
     }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
+    public boolean isJobValid() {
+        return (this.name != null) ||
+                (this.employer != null) ||
+                (this.location != null) ||
+                (this.positionType != null) ||
+                (this.coreCompetency != null);
+    }
+    @Override public String toString() {
+        if (!isJobValid()) {
+            return "Job does not exist.";
+        }
+        String newline = System.lineSeparator();
+
+        return      newline+
+                    "ID: " + this.getId() + newline +
+                    "Name: " + this.getName() + newline +
+                    "Employer: " + this.getEmployer() + newline +
+                    "Location: " + this.getLocation() + newline +
+                    "Position Type: " + this.getPositionType() + newline +
+                    "Core Competency: " + this.getCoreCompetency() + newline;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Job job = (Job) o;
+        return id == job.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    // Generate the hashCode method using the id field:
+
+    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+    //  and id.
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
+        if (this.name == null) {
+            return "Data not available";
+        }
         return name;
     }
 
@@ -41,6 +85,9 @@ public class Job {
     }
 
     public Employer getEmployer() {
+        if (this.employer.getValue() == null || this.employer.getValue().isEmpty()) {
+            return new Employer("Data not available");
+        }
         return employer;
     }
 
@@ -49,6 +96,9 @@ public class Job {
     }
 
     public Location getLocation() {
+        if (this.location.getValue() == null || this.location.getValue().isEmpty()) {
+            return new Location("Data not available");
+        }
         return location;
     }
 
@@ -57,6 +107,9 @@ public class Job {
     }
 
     public PositionType getPositionType() {
+        if (this.positionType.getValue() == null || this.positionType.getValue().isEmpty()) {
+            return new PositionType("Data not available");
+        }
         return positionType;
     }
 
@@ -65,30 +118,14 @@ public class Job {
     }
 
     public CoreCompetency getCoreCompetency() {
+        if(this.coreCompetency.getValue() == null || this.coreCompetency.getValue().isEmpty()) {
+            return new CoreCompetency("Data not available");
+        }
         return coreCompetency;
     }
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Job)) return false;
-        Job job = (Job) o;
-        return id == job.id;
-    }
-
-    // Generate the hashCode method using the id field:
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
 }
+
